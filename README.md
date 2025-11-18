@@ -20,7 +20,6 @@ A PyTorch implementation of a bidirectional LSTM used to predict per-residue sec
 - The model with the best validation balanced accuracy is automatically restored and saved as ```lstm_weights.pt```.
 - Jobs were executed on an HPC cluster using SLURM.
 
-25,000 Dataset: [data/dataset_25000.json](data/dataset_25000.json)   
 Example SLURM script to run training for multiple combinations of hyperparaparameters: [run_scripts/run_lstm.sh](run_scripts/run_lstm.sh)
 
 **Example training command:**
