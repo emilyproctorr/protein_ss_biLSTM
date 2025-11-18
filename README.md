@@ -19,7 +19,7 @@ A PyTorch implementation of a bidirectional LSTM used to predict per-residue sec
 - Training uses a curated dataset of ~25,000 protein sequences with residue-level DSSP secondary structure labels.
 - The sequences are processed into tensors with padding and masking to account for sequences of variable length.
 - Early stopping is used to halt training when validation performance stops improving.
-- The model with the best validation balanced accuracy is automatically restored and saved as ```lstm_weights.pt```.
+- The model with the best validation balanced accuracy is restored and saved in weights file.
 - Jobs were executed on an HPC cluster using SLURM.
 
 Example SLURM script to run training for multiple combinations of hyperparaparameters: [run_scripts/run_lstm.sh](run_scripts/run_lstm.sh)
@@ -41,11 +41,9 @@ python3 LSTM.py --mode "train" \
 ### Inference
 
 - Inference can be performed using any previously trained model checkpoint.
-- Given a FASTA file, the model outputs per-residue predicted secondary structure in FASTA format (single-line) using either 3-class or 9-class DSSP labeling.
-- To run inference, set ```--mode``` to "inference" and provide:
-  - ```--fasta``` → path to the FASTA file containing one or more protein sequences
-  - ```--output_folder``` → directory containing the trained model weights (```lstm_weights.pt```)
-- All hyperparameters must match those used during training, otherwise the saved weights will not load correctly.
+- Given a FASTA file, the model outputs per-residue predicted secondary structure in FASTA format (single-line) using either 3-class or 9-class DSSP labeling for each protein sequence.
+
+Example FASTA input file: [data/input_sequences.fasta](data/input_sequences.fasta)
 
 **Example inference command:**
 <pre>
@@ -100,12 +98,9 @@ Raw data files: [results/model_output_folder/](results/model_output_folder/)
 
 ### Plotting
 
-Training and validation metrics were saved at every epoch and visualized to evaluates model performance. I have included a plotting [script](src/plot_training.py) (```plot_training.py```) that generates metric curves for both training and validation sets, including:
-- Loss
-- Balanced accuracy
-- Precision
-- Recall
+Training and validation metrics were saved at every epoch and visualized to evaluates model performance. I have included a script that constructs plots comparing key metrics, including loss, balanced accuracy, precision, and recall, between the training and validation sets over each epoch.
 
+Plotting script: [src/plot_training.py](src/plot_training.py)   
 Example plot: [results/train_val_curves.pdf](results/train_val_curves.pdf)
 
 

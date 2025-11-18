@@ -182,7 +182,7 @@ def train_model(batch_size=32, hidden_dim=64, num_layers=2, learning_rate=0.001,
     log_file.write(f"batch_size: {train_dataloader.batch_size}, num_epochs: {num_epochs}, num_layers: {num_layers}, hidden_dim: {hidden_dim}, learning_rate: {learning_rate}, dropout: {dropout}, num_outputs: {num_outputs}\n")
     num_params = sum(p.numel() for p in model.parameters() if p.requires_grad) # track how many trainable parameters there are to track model size
     log_file.write(f"trainable_params: {num_params}\n")
-    log_file.write(f"epoch\ttime\tloss\ttrain_balacc\ttrain_prec\ttrain_recall\ttrain_f1\tval_balacc\tval_prec\tval_recall\tval_f1\n")
+    log_file.write(f"epoch\ttime\ttrain_loss\ttrain_balacc\ttrain_prec\ttrain_recall\ttrain_f1\tval_loss\tval_balacc\tval_prec\tval_recall\tval_f1\n")
     log_file.flush()
 
     best_val_acc = 0.0
