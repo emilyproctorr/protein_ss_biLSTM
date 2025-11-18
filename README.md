@@ -2,7 +2,9 @@
 
 Authors: <i>Emily Proctor and David Noblett</i>
 
-A PyTorch implementation of a bidirectional LSTM used to predict per-residue secondary structure assignment given primary amino acid sequence. The model predicts either general, 3-class, or specific, 9-class, secondary structure assignment using DSSP (Database of Secondary Structure Assignments) labels. This model supports both training and inference of protein sequences.
+A PyTorch implementation of a bidirectional LSTM used to predict per-residue secondary structure assignment given primary amino acid sequence. The model predicts either 3-class (general) or 9-class (specific) secondary structure assignment using DSSP (Database of Secondary Structure Assignments) labels. This model supports both training and inference of protein sequences.
+
+---
 
 ### Configurable parameters:
 - batch size
